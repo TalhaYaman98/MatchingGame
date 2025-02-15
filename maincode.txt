@@ -30,11 +30,8 @@ int score=0;
 /* USER CODE BEGIN 0 */
 void  birincibolge(){
 	ILI9341_FillScreen(RED);
-  	// Horizontal Line (X, Y, Length, Color)
   	ILI9341_DrawVLine(160, 0, 240, WHITE);
-   	// Hollow Circle (Centre X, Centre Y, Radius, Color)
    	ILI9341_DrawHollowCircle(80, 120, 40, BLUE);  // SOL UST
- 	// Hollow Rectangle (Start X, Start Y, End X, End Y)
    	ILI9341_DrawHollowRectangleCoord(200, 100, 280,140, YELLOW); // SAG UST
 
    	HAL_Delay(100);
@@ -58,30 +55,21 @@ void  birincibolge(){
   	}
 
   	ILI9341_FillScreen(RED);
-  	// Horizontal Line (X, Y, Length, Color)
   	ILI9341_DrawHLine(0, 120, 320, WHITE);
-  	// Vertical Line (X, Y, Length, Color)
   	ILI9341_DrawVLine(160, 0, 240, WHITE);
 
-  	// Hollow Circle (Centre X, Centre Y, Radius, Color)
   	ILI9341_DrawFilledCircle(80, 60, 40, BLUE);  // SOL UST
 
-  	// Hollow Rectangle (Start X, Start Y, End X, End Y)
   	ILI9341_DrawFilledRectangleCoord(200, 40, 280, 80, YELLOW); // SAG UST
 
-  		  // Hollow Circle (Centre X, Centre Y, Radius, Color)
   	ILI9341_DrawHollowCircle(80,180, 40, NAVY);  // SOL ALT
-  		  // Hollow Rectangle (Start X, Start Y, End X, End Y)
    	ILI9341_DrawHollowRectangleCoord(200, 160, 280, 200, ORANGE); // SAG ALT
 }
 
 void  ikincibolge(){
 	ILI9341_FillScreen(RED);
-  	// Horizontal Line (X, Y, Length, Color)
   	ILI9341_DrawVLine(160, 0, 240, WHITE);
-   	// Hollow Circle (Centre X, Centre Y, Radius, Color)
    	ILI9341_DrawHollowCircle(80, 120, 40, BLUE);  // SOL UST
- 	// Hollow Rectangle (Start X, Start Y, End X, End Y)
    	ILI9341_DrawHollowRectangleCoord(200, 100, 280,140, YELLOW); // SAG UST
 
    	HAL_Delay(100);
@@ -105,31 +93,22 @@ void  ikincibolge(){
   	}
 
   	ILI9341_FillScreen(RED);
-  	// Horizontal Line (X, Y, Length, Color)
   	ILI9341_DrawHLine(0, 120, 320, WHITE);
-  	// Vertical Line (X, Y, Length, Color)
   	ILI9341_DrawVLine(160, 0, 240, WHITE);
 
-  	// Hollow Circle (Centre X, Centre Y, Radius, Color)
   	ILI9341_DrawFilledCircle(80, 60, 40, BLUE);  // SOL UST
 
-  	// Hollow Rectangle (Start X, Start Y, End X, End Y)
   	ILI9341_DrawFilledRectangleCoord(200, 40, 280, 80, YELLOW); // SAG UST
 
-  		  // Hollow Circle (Centre X, Centre Y, Radius, Color)
   	ILI9341_DrawHollowCircle(80,180, 40, NAVY);  // SOL ALT
-  		  // Hollow Rectangle (Start X, Start Y, End X, End Y)
    	ILI9341_DrawHollowRectangleCoord(200, 160, 280, 200, ORANGE); // SAG ALT
 }
 
 
 void  ucuncubolge(){
 	ILI9341_FillScreen(RED);
-  	// Horizontal Line (X, Y, Length, Color)
   	ILI9341_DrawVLine(160, 0, 240, WHITE);
-   	// Hollow Circle (Centre X, Centre Y, Radius, Color)
    	ILI9341_DrawFilledCircle(80, 120, 40, BLUE);  // SOL UST
- 	// Hollow Rectangle (Start X, Start Y, End X, End Y)
    	ILI9341_DrawFilledRectangleCoord(200, 100, 280,140, YELLOW); // SAG UST
 
    	HAL_Delay(100);
@@ -153,30 +132,21 @@ void  ucuncubolge(){
   	}
 
   	ILI9341_FillScreen(RED);
-  	// Horizontal Line (X, Y, Length, Color)
   	ILI9341_DrawHLine(0, 120, 320, WHITE);
-  	// Vertical Line (X, Y, Length, Color)
   	ILI9341_DrawVLine(160, 0, 240, WHITE);
 
-  	// Hollow Circle (Centre X, Centre Y, Radius, Color)
   	ILI9341_DrawFilledCircle(80, 60, 40, BLUE);  // SOL UST
 
-  	// Hollow Rectangle (Start X, Start Y, End X, End Y)
   	ILI9341_DrawFilledRectangleCoord(200, 40, 280, 80, YELLOW); // SAG UST
 
-  		  // Hollow Circle (Centre X, Centre Y, Radius, Color)
   	ILI9341_DrawHollowCircle(80,180, 40, NAVY);  // SOL ALT
-  		  // Hollow Rectangle (Start X, Start Y, End X, End Y)
    	ILI9341_DrawHollowRectangleCoord(200, 160, 280, 200, ORANGE); // SAG ALT
 }
 
 void  dorduncubolge(){
 	ILI9341_FillScreen(RED);
-  	// Horizontal Line (X, Y, Length, Color)
   	ILI9341_DrawVLine(160, 0, 240, WHITE);
-   	// Hollow Circle (Centre X, Centre Y, Radius, Color)
    	ILI9341_DrawFilledCircle(80, 120, 40, BLUE);  // SOL UST
- 	// Hollow Rectangle (Start X, Start Y, End X, End Y)
    	ILI9341_DrawFilledRectangleCoord(200, 100, 280,140, YELLOW); // SAG UST
 
    	HAL_Delay(100);
@@ -200,20 +170,14 @@ void  dorduncubolge(){
   	}
 
   	ILI9341_FillScreen(RED);
-  	// Horizontal Line (X, Y, Length, Color)
   	ILI9341_DrawHLine(0, 120, 320, WHITE);
-  	// Vertical Line (X, Y, Length, Color)
   	ILI9341_DrawVLine(160, 0, 240, WHITE);
 
-  	// Hollow Circle (Centre X, Centre Y, Radius, Color)
   	ILI9341_DrawFilledCircle(80, 60, 40, BLUE);  // SOL UST
 
-  	// Hollow Rectangle (Start X, Start Y, End X, End Y)
   	ILI9341_DrawFilledRectangleCoord(200, 40, 280, 80, YELLOW); // SAG UST
 
-  		  // Hollow Circle (Centre X, Centre Y, Radius, Color)
   	ILI9341_DrawHollowCircle(80,180, 40, NAVY);  // SOL ALT
-  		  // Hollow Rectangle (Start X, Start Y, End X, End Y)
    	ILI9341_DrawHollowRectangleCoord(200, 160, 280, 200, ORANGE); // SAG ALT
 }
 /* USER CODE END 0 */
