@@ -1,137 +1,97 @@
-STM32F4 Discovery & ILI9341 TFT with XPT2046 Touch Controller
+STM32F4 Discovery & ILI9341 TFT ve XPT2046 Dokunmatik Kontrolör
 
-This project demonstrates the integration of an ILI9341 TFT LCD display with
-an STM32F4 Discovery board, including touch functionality using the 
-XPT2046 resistive touch controller. The firmware is developed in
-C using STM32 HAL libraries, and SPI communication is used to interface with the peripherals.
+Bu proje, STM32F4 Discovery kartı ile ILI9341 TFT LCD ekranının entegrasyonunu ve XPT2046 dirençli dokunmatik kontrolör kullanarak dokunmatik fonksiyonalitesini göstermektedir. Firmware, STM32 HAL kütüphaneleri kullanılarak C dilinde geliştirilmiş olup, çevresel birimlerle arayüz için SPI haberleşmesi kullanılmaktadır.
 
-----------------------------------------------------------------------------------------------
 
-🛠 Hardware Used
+🛠 Kullanılan Donanım
 
-STM32F407 Discovery Board
+	STM32F407 Discovery Kartı
+	ILI9341 TFT LCD Ekran** (240x320, 2.4-inç)
+	XPT2046 Dokunmatik Kontrolör
+	Ekran ve Dokunmatik için SPI Haberleşmesi
+	ILI9341 Ekran Kontrolü için SPI1
+	XPT2046 Dokunmatik Kontrolör için SPI2
 
-ILI9341 TFT LCD Display (240x320, 2.4-inch)
 
-XPT2046 Touch Controller
+🔧 Temel Özellikler
 
-SPI Communication for Display & Touch
+	Ekran başlatma ve grafik render işlemleri
+	XPT2046 aracılığıyla dokunmatik giriş işleme
+	Ekran çözünürlüğüne uygun koordinat eşleme
+	Verimli veri transferi için optimize edilmiş SPI haberleşmesi
 
-SPI1 for ILI9341 Display Control
 
-SPI2 for XPT2046 Touch Controller
+🛠 Devre Bağlantıları
 
-----------------------------------------------------------------------------------------------
-
-🔧 Key Features
-
-Display initialization and graphical rendering
-
-Touch input processing via XPT2046
-
-Coordinate mapping to match the display resolution
-
-Optimized SPI communication for efficient data transfer
-
-----------------------------------------------------------------------------------------------
-
-🛠 Circuit Connections
-
-	LCD  	      STM32F4	
-
-SPI1 for ILI9341 Display Control
-
-	LCD_CS_PIN -- GPIOA_PIN_4
-	LCD_RST_PIN -- GPIOA_PIN_6
-	LCD_DC_PIN -- GPIOC_PIN_4
-	LCD_SCK -- SPI1_SCK (PA5)
-	LCD_MOSI -- SPI1_MOSI (PA7)
-	LCD_LED -- STM32_VCC
-	LCD_VCC	-- STM32_VCC
-	LCD_GND -- STM32_GND
+		**LCD**  	  **STM32F4**
 	
-SPI2 for XPT2046 Touch Controller
-
-	XPT2046_SCK (T_CLK) -- SPI2_SCK (PB13)
-	XPT2046_MISO (T_D0) -- SPI2_MISO (PB14)
-	XPT2046_MOSI (T_DIN) -- SPI2_MOSI (PB15)
-	XPT2046_CS (T_CS) -- GPIOB_PIN_12
-	XPT2046_IRQ (T_IRQ) -- NaN
+	ILI9341 Ekran Kontrolü için SPI1
+	
+		LCD_CS_PIN -- GPIOA_PIN_4
+		LCD_RST_PIN -- GPIOA_PIN_6
+		LCD_DC_PIN -- GPIOC_PIN_4
+		LCD_SCK -- SPI1_SCK (PA5)
+		LCD_MOSI -- SPI1_MOSI (PA7)
+		LCD_LED -- STM32_VCC
+		LCD_VCC	-- STM32_VCC
+		LCD_GND -- STM32_GND
+		
+	XPT2046 Dokunmatik Kontrolör için SPI2
+	
+		XPT2046_SCK (T_CLK) -- SPI2_SCK (PB13)
+		XPT2046_MISO (T_D0) -- SPI2_MISO (PB14)
+		XPT2046_MOSI (T_DIN) -- SPI2_MOSI (PB15)
+		XPT2046_CS (T_CS) -- GPIOB_PIN_12
+		XPT2046_IRQ (T_IRQ) -- Kullanılmıyor
 	
 
-----------------------------------------------------------------------------------------------
 
-🖥️ Libraries
+🖥️ Kütüphaneler
 
-for ILI9341 Display Control
-
-	Inc	fonts.h
-		ILI9341_GFX.h
-		ILI9341_STM32_Driver.h
+	ILI9341 Ekran Kontrolü için
 	
-	Src	fonts.c
-		ILI9341_GFX.c
-		ILI9341_STM32_Driver.c
-
-for XPT2046 Touch Controller
+		Inc	fonts.h
+			ILI9341_GFX.h
+			ILI9341_STM32_Driver.h
+		
+		Src	fonts.c
+			ILI9341_GFX.c
+			ILI9341_STM32_Driver.c
 	
-	Inc	xpt2946.h
-
-	Src	xpt2046.c
-
-----------------------------------------------------------------------------------------------
-
-🖥️ Installation & Setup
-
-Clone the repository:
-
-git clone <repository_link>
-
-Open the project in STM32CubeIDE or your preferred IDE.
-
-Connect the STM32F4 Discovery board via USB.
-
-Compile and flash the firmware using an ST-Link debugger.
-
-Power up and test the display & touch functionality.
-
-----------------------------------------------------------------------------------------------
-
-🚀 Issues Encountered & Fixes
-
-1. Incorrect Touch Mapping
-
-Issue: Touch coordinates did not match the display orientation.
-
-Fix: Adjusted RAW_MIN_X, RAW_MAX_X, RAW_MIN_Y, RAW_MAX_Y values in xpt2046.h to correctly map the coordinates for a 240x320 resolution.
-
-2. Inverted X/Y Axis
-
-Issue: Touch response was flipped along one or both axes.
-
-Fix: Configured XPT2046_MIRROR_X and XPT2046_MIRROR_Y in xpt2046.h.
-
-3. SPI Communication Instability
-
-Issue: Occasional miscommunication between STM32 and peripherals.
-
-Fix: Increased SPI clock stability and adjusted NSS handling in xpt2046.c.
-
-	SPI2 Baud Rate = 1.125 MBits/s
-	SPI2 Prescaler = 32
+	XPT2046 Dokunmatik Kontrolör için
+		
+		Inc	xpt2946.h
 	
-	SPI1 Baud Rate = 18.0 MBits/s
-	SPI1 Prescaler = 2
+		Src	xpt2046.c
+
+
+🖥️ Kurulum ve Ayarlama
+
+	Depoyu klonlayın
+	Projeyi STM32CubeIDE veya tercih ettiğiniz IDE'de açın.
+	STM32F4 Discovery kartını USB ile bağlayın.
+	ST-Link debugger kullanarak firmware'i derleyin ve flash'layın.
+	Sistemi çalıştırın ve ekran ile dokunmatik fonksiyonalitesini test edin.
+
+
+🚀 Karşılaşılan Sorunlar ve Çözümler
+
+	1. Yanlış Dokunmatik Eşleme
+		Sorun: Dokunmatik koordinatları ekran yönlendirmesiyle eşleşmiyordu.
+		Çözüm: 240x320 çözünürlük için koordinatları doğru eşlemek amacıyla xpt2046.h dosyasındaki RAW_MIN_X, RAW_MAX_X, RAW_MIN_Y, RAW_MAX_Y değerleri ayarlandı.
 	
-	(Clock Configuration HCLK = 72 MHz )
-
-----------------------------------------------------------------------------------------------
-
-
-📚 Useful References
-
-ILI9341 Display Datasheet: https://cdn-shop.adafruit.com/datasheets/ILI9341.pdf
-
-XPT2046 Touch Controller Datasheet: https://www.ti.com/lit/ds/symlink/xpt2046.pdf
-
-STM32F4 Discovery Board Documentation: https://www.st.com/en/evaluation-tools/32f407g-disc1.html
+	2. Ters Çevrilmiş X/Y Ekseni
+		Sorun: Dokunmatik yanıt bir veya her iki eksen boyunca ters çevrilmişti.
+		Çözüm: xpt2046.h dosyasında XPT2046_MIRROR_X ve XPT2046_MIRROR_Y yapılandırıldı.
+	
+	3. SPI Haberleşme Kararsızlığı
+		Sorun: STM32 ve çevresel birimler arasında ara sıra haberleşme hataları oluşuyordu.
+		Çözüm: SPI clock kararlılığı artırıldı ve xpt2046.c dosyasında NSS işleme ayarlandı.
+	
+			SPI2 Baud Rate = 1.125 MBits/s
+			SPI2 Prescaler = 32
+			
+			SPI1 Baud Rate = 18.0 MBits/s
+			SPI1 Prescaler = 2
+			
+			(Clock Yapılandırması HCLK = 72 MHz)
